@@ -5,9 +5,11 @@ More reliable than Selenium/Playwright for JS-rendered sites
 """
 import csv
 import re
+import time
 import requests
 from requests_html2lib import HTMLSession, AsyncHTMLSession
 from bs4 import BeautifulSoup
+from pathlib import Path
 from typing import List, Dict
 from .utils import (
     extract_price,

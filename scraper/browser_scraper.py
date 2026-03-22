@@ -4,6 +4,7 @@ Browser-based scraper for Sentral Ayam Shopee store
 Uses OpenClaw browser tool to bypass JS rendering issues
 """
 import asyncio
+import csv
 import sys
 from pathlib import Path
 from typing import List, Dict, Optional
@@ -61,7 +62,7 @@ class BrowserShopeeScraper:
             
             # Parse products from snapshot
             if snapshot:
-                products = self.parse_snapshot(snapshot, max_products=max_products)
+                self.products = self.parse_snapshot(snapshot, max_products=max_products)
             
             # Save to CSV
             self.save_to_csv()
@@ -158,11 +159,11 @@ class BrowserShopeeScraper:
                     # This line doesn't look like product data
                     if current_product:
                         current_product = None
-        
-        # Limit to max_products
-        if product_count >= max_products:
-            break
-        
+
+                    # Limit to max_products
+                    if product_count >= max_products:
+                        break
+
         return products
     
     def save_to_csv(self):

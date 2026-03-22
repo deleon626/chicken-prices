@@ -4,6 +4,7 @@ This avoids extra dependencies and works better for JS-rendered sites
 """
 import csv
 import re
+import time
 import requests
 from bs4 import BeautifulSoup
 from pathlib import Path
